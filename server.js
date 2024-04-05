@@ -1,7 +1,7 @@
-require("dotenv").config({ path: "./.env" }); // dotenv connection
+require("dotenv").config({ path: "./.env" }); 
 
 const express = require("express");
-const chartRoutes = require("./routes/route"); // Ensure this path matches the name and location of your routes file
+const chartRoutes = require("./routes/route"); 
 
 // Express setup
 const app = express();
@@ -24,7 +24,6 @@ require("./config/database");
 // Use routes
 app.use("/api", chartRoutes);
 
-// Corrected the bitwise OR '|' to logical OR '||' for the default port
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
 	console.log(`Server is running on http://localhost:${PORT}`);

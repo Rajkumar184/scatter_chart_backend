@@ -89,6 +89,7 @@ router.put("/update/:id", async (req, res, next) => {
   }
 });
 
+// DELETE route to create a chart
 router.delete("/delete/:id", async (req, res) => {
   try {
     const { id } = req.params;
