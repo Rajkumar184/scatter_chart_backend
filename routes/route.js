@@ -65,7 +65,7 @@ router.post("/create", async (req, res, next) => {
 router.put("/update/:id", async (req, res, next) => {
   try {
     const { id } = req.params;
-    const { datapoints } = req.body;
+    const { label, datapoints } = req.body;
 
 
     if (!datapoints) {
@@ -74,7 +74,7 @@ router.put("/update/:id", async (req, res, next) => {
 
     const response = await Chart.findByIdAndUpdate(
       id,
-      { datapoints, updatedAt: Date.now() },
+      { label, datapoints, updatedAt: Date.now() },
       { new: true, runValidators: true }
     );
 
