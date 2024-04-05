@@ -3,7 +3,6 @@ const mongoose = require("mongoose");
 const datapointsSchema = new mongoose.Schema({
     x: { type: Number, required: true },
     y: { type: Number, required: true },
-    label: { type: String, required: true },
     createdAt: {
         type: Date,
         default: Date.now,
@@ -15,6 +14,7 @@ const datapointsSchema = new mongoose.Schema({
 });
 
 const chartSchema = new mongoose.Schema({
+    label: { type: String, required: true },
     datapoints: [datapointsSchema],
     createdAt: {
         type: Date,

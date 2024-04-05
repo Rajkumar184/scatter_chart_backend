@@ -40,13 +40,13 @@ router.get("/get/:id", async (req, res, next) => {
 // POST route to create a chart
 router.post("/create", async (req, res, next) => {
   try {
-    const { datapoints } = req.body;
+    const { label, datapoints } = req.body;
 
     if (!datapoints) {
       return res.status(400).json({ message: "Datapoints are required" });
     }
 
-    const newChart = new Chart({ datapoints });
+    const newChart = new Chart({ label, datapoints });
     const response = await newChart.save();
 
     return res.status(201).json({
