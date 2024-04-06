@@ -30,11 +30,18 @@ const Chart = mongoose.model("chart", chartSchema);
 module.exports = Chart;
 
 // {
+//     "_id": "789",
+//     "label": "second point",
 //     "datapoints": [
 //         {
+//             "_id": "123",
 //             "x": 50,
-//             "y": 20,
-//             "label":"second point" 
+//             "y": 20, 
+//         },
+//         {
+//             "_id": "456",
+//             "x": 30,
+//             "y": 50, 
 //         }
 //     ]
 // }

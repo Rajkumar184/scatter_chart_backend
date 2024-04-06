@@ -23,7 +23,7 @@ router.get("/get/:id", async (req, res, next) => {
     const { id } = req.params;
 
     const response = await Chart.find(
-      {_id:id}
+      { _id: id }
     );
 
     return res.status(201).json({
@@ -86,6 +86,26 @@ router.put("/update/:id", async (req, res, next) => {
     return res.status(400).json({
       message: error.message,
     });
+  }
+});
+
+//Update data point
+router.post('/updateDataPoint', async (req, res) => {
+  const { x, y, subId, mainId } = req.body;
+
+  try {
+    const result = await Chart.updateOne(
+      { _id: mainId, 'datapoints._id': subId },
+      { $set: { 'datapoints.$.x': x,'datapoints.$.y': y } }
+    );
+
+    if (result.modifiedCount === 0) {
+      return res.status(404).send('DataPoint not found or not updated.');
+    }
+
+    res.status(200).send('DataPoint updated successfully.');
+  } catch (error) {
+    res.status(500).send(error.message);
   }
 });
 

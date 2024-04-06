@@ -10,13 +10,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // CORS setup
 const cors = require("cors");
-app.use(cors(
-	{
-		origin: ["https://scatter-chart.vercel.app", "http://localhost:3000"],
-		methods: ["POST", "GET"],
-		credentials: true
-	}
-));
+app.use(cors());
 
 // Database connection
 require("./config/database");
